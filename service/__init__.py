@@ -9,7 +9,7 @@ app.config.from_object(config)
 
 from service import routes, models  # noqa: F401 E402
 
-from service.common import error_handlers, cli_commands  
+from service.common import error_handlers, cli_commands
 
 log_handlers.init_logging(app, "gunicorn.error")
 
@@ -18,8 +18,8 @@ app.logger.info("  A C C O U N T   S E R V I C E   R U N N I N G  ".center(70, "
 app.logger.info(70 * "*")
 
 try:
-    models.init_db(app)  
-except Exception as error: 
+    models.init_db(app)
+except Exception as error:
     app.logger.critical("%s: Cannot continue", error)
     sys.exit(4)
 
