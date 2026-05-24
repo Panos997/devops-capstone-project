@@ -11,6 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     container: python:3.9-slim
 
+    env:
+      DATABASE_URI: postgresql://postgres:pgs3cr3t@postgres:5432/testdb
+      FLASK_APP: service:app
+      FLASK_ENV: testing
+
     services:
       postgres:
         image: postgres:alpine
@@ -27,7 +32,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Install dependencies
         run: |
